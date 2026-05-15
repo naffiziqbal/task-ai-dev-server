@@ -1,0 +1,70 @@
+IN THE SUPERIOR COURT OF THE STATE OF NEW YORK
+COUNTY OF NEW YORK
+
+ZANE & CO. INDUSTRIES, INC.,
+                    Plaintiff,
+        v.
+HARDMAN HOLDINGS, LLC, and
+JONATHAN SIDWELL,
+                    Defendants.
+
+Case No. 24-CIV-9821
+
+COMPLAINT FOR BREACH OF CONTRACT
+
+Plaintiff Zane & Co. Industries, Inc. ("Zane"), by and through its undersigned
+counsel, brings this action against Defendants Hardman Holdings, LLC
+("Hardman") and Jonathan Sidwell ("Sidwell"), and alleges as follows:
+
+PARTIES
+
+1. Plaintiff Zane is a corporation organized and existing under the laws of
+   the State of Delaware, with its principal place of business in New York,
+   New York.
+
+2. Defendant Hardman is a limited liability company organized and existing
+   under the laws of the State of New York.
+
+3. Defendant Sidwell is an individual residing in New York County, New York,
+   and is the managing member of Hardman.
+
+FACTUAL BACKGROUND
+
+4. On January 14, 2024, Zane and Hardman executed a Master Services Agreement
+   (the "Agreement") under which Hardman would deliver bespoke financial
+   advisory services to Zane in exchange for monthly retainer payments of
+   $75,000.
+
+5. Beginning on April 1, 2024, Hardman ceased providing the services
+   contemplated by the Agreement, while continuing to invoice Zane.
+
+6. On June 12, 2024, Zane sent a written notice of default to Hardman
+   pursuant to Section 9.2 of the Agreement. Hardman did not respond.
+
+7. On August 3, 2024, Sidwell, acting on behalf of Hardman, sent an email
+   to Zane's CFO stating that "the engagement is concluded, effective
+   immediately," but refused to refund prepaid amounts totaling $225,000.
+
+CLAIM FOR RELIEF — BREACH OF CONTRACT
+
+8. The allegations of paragraphs 1 through 7 are incorporated by reference.
+
+9. The Agreement constitutes a valid and binding contract between Zane and
+   Hardman.
+
+10. Hardman materially breached the Agreement by ceasing performance and
+    refusing to refund prepaid retainer amounts.
+
+11. Zane has been damaged in an amount not less than $225,000.
+
+PRAYER FOR RELIEF
+
+WHEREFORE, Plaintiff Zane respectfully requests that this Court enter
+judgment in its favor and against Defendants for compensatory damages,
+costs, and such other relief as the Court deems just and proper.
+
+Dated: October 12, 2024
+                                      ZANE & CO. INDUSTRIES, INC.
+                                      By: /s/ Harvey Specter
+                                      Specter LLP
+                                      Counsel for Plaintiff

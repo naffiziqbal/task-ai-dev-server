@@ -1,0 +1,42 @@
+# Infra-only stack. Backend and client are run from the terminal with
+# `pnpm dev` — they don't live in compose.
+#
+# Project is pinned to "task" so containers are always `task-postgres`,
+# `task-redis`, network `task_default`, regardless of which directory you
+# run compose from.
+name: task
+
+services:
+  postgres:
+    container_name: task-postgres
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-psl}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-psl}
+      POSTGRES_DB: ${POSTGRES_DB:-psl}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-psl} -d ${POSTGRES_DB:-psl}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    container_name: task-redis
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres_data:
