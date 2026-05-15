@@ -20,6 +20,17 @@ async function bootstrap() {
   // scheme and client IP via X-Forwarded-* headers.
   app.set("trust proxy", 1);
 
+  app.use((req: any, res: any, next: any) => {
+    const start = Date.now();
+    res.on("finish", () => {
+      const ms = Date.now() - start;
+      console.log(
+        `[req] ${req.method} ${req.originalUrl} -> ${res.statusCode} (${ms}ms) origin=${req.headers.origin ?? "-"}`,
+      );
+    });
+    next();
+  });
+
   app.enableCors({
     origin: process.env.WEB_ORIGIN ?? "http://localhost:3000",
     credentials: true,
