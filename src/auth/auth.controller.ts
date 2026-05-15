@@ -94,6 +94,7 @@ function setSessionCookie(res: Response, token: string, expiresAt: Date) {
     sameSite: isProd ? "none" : "lax",
     secure: isProd,
     expires: expiresAt,
+    domain: process.env.COOKIE_DOMAIN || undefined,
   });
 }
 
@@ -104,6 +105,7 @@ function clearSessionCookie(res: Response) {
     path: "/",
     sameSite: isProd ? "none" : "lax",
     secure: isProd,
+    domain: process.env.COOKIE_DOMAIN || undefined,
   });
 }
 
