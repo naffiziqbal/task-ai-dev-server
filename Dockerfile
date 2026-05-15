@@ -4,7 +4,7 @@ FROM node:20-bookworm-slim AS build
 # native bindings that ship with node-tesseract-ocr — and at runtime for the
 # actual OCR pass.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      tesseract-ocr tesseract-ocr-eng poppler-utils ghostscript \
+      tesseract-ocr tesseract-ocr-eng poppler-utils ghostscript graphicsmagick \
       build-essential python3 ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
@@ -19,7 +19,7 @@ RUN pnpm build
 
 FROM node:20-bookworm-slim AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      tesseract-ocr tesseract-ocr-eng poppler-utils ghostscript ca-certificates \
+      tesseract-ocr tesseract-ocr-eng poppler-utils ghostscript graphicsmagick ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
