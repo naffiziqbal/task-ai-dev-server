@@ -1,0 +1,37 @@
+name: task
+
+services:
+  api:
+    build: .
+    container_name: task-api
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:4333:4333"
+    volumes:
+      - ./uploads:/app/uploads
+
+  worker:
+    build: .
+    container_name: task-worker
+    restart: unless-stopped
+    env_file: .env
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+
+  postgres:
+    ports: !reset []
+
+  redis:
+    ports: !reset []
