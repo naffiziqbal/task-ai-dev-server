@@ -8,12 +8,17 @@ if (existsSync(envPath)) process.loadEnvFile(envPath);
 
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe } from "@nestjs/common";
+import type { NestExpressApplication } from "@nestjs/platform-express";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bodyParser: true,
   });
+
+  // Required when running behind Nginx so Express sees the original https
+  // scheme and client IP via X-Forwarded-* headers.
+  app.set("trust proxy", 1);
 
   app.enableCors({
     origin: process.env.WEB_ORIGIN ?? "http://localhost:3000",

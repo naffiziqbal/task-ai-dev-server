@@ -88,28 +88,23 @@ export class AuthController {
 
 function setSessionCookie(res: Response, token: string, expiresAt: Date) {
   const isProd = process.env.NODE_ENV === "production";
-  const parts = [
-    `${SESSION_COOKIE}=${token}`,
-    "HttpOnly",
-    "Path=/",
-    `SameSite=${isProd ? "None" : "Lax"}`,
-    `Expires=${expiresAt.toUTCString()}`,
-  ];
-  if (isProd) parts.push("Secure");
-  res.setHeader("Set-Cookie", parts.join("; "));
+  res.cookie(SESSION_COOKIE, token, {
+    httpOnly: true,
+    path: "/",
+    sameSite: isProd ? "none" : "lax",
+    secure: isProd,
+    expires: expiresAt,
+  });
 }
 
 function clearSessionCookie(res: Response) {
   const isProd = process.env.NODE_ENV === "production";
-  const parts = [
-    `${SESSION_COOKIE}=`,
-    "HttpOnly",
-    "Path=/",
-    `SameSite=${isProd ? "None" : "Lax"}`,
-    "Expires=Thu, 01 Jan 1970 00:00:00 GMT",
-  ];
-  if (isProd) parts.push("Secure");
-  res.setHeader("Set-Cookie", parts.join("; "));
+  res.clearCookie(SESSION_COOKIE, {
+    httpOnly: true,
+    path: "/",
+    sameSite: isProd ? "none" : "lax",
+    secure: isProd,
+  });
 }
 
 function readSessionCookie(req: Request): string | null {
